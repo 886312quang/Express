@@ -4,9 +4,17 @@ a(href="/users/create")
 form(action='/users/search')
     input(type="text" name='q' id="input-field" value=searchInput)
     button Search
+form(action='/users/remove')
+    input(type="text" name='x' id="delete")
+    button delete  
+
 ul
     each user in users
-        li= user.name
+        li
+            span= user.name
+            span &nbsp;
+            a(href='/users/'+ user.id) View
+
 script.
     var searchInput = document.getElementById('input-field');
         searchInput.value = sessionStorage.getItem('draft');
