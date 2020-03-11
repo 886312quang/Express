@@ -1,0 +1,15 @@
+h1 Users
+a(href="/users/create")
+    button Create
+form(action='/users/search')
+    input(type="text" name='q' id="input-field" value=searchInput)
+    button Search
+ul
+    each user in users
+        li= user.name
+script.
+    var searchInput = document.getElementById('input-field');
+        searchInput.value = sessionStorage.getItem('draft');
+        searchInput.addEventListener('change', function() {
+        sessionStorage.setItem('draft', searchInput.value);
+    });
