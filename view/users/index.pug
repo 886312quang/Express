@@ -2,21 +2,24 @@ extends ../layouts/common.pug
 
 block content
     h1 Users
-    a(href="/users/create")
-        button Create
-    form(action='/users/search')
-        input(type="text" name='q' id="input-field" value=searchInput)
-        button(class="btn btn-primary ml-3") Search
-    form(action='/users/remove')
-        input(type="text" name='x' id="delete")
-        button(class="btn btn-primary ml-3") delete  
+        a.mr-2(href="/users/create")
+            button(class="btn btn-primary") New
+    .d-flex.align-items-center.pt-4
+        form.ml-auto(action='/users/search')
+            input(type="text" name='q' id="input-field" value=searchInput)
+            button(class="btn btn-primary ml-auto ml-2") Search
 
-    ul
+    table.table
+        tr
+            th Name
+            th Phone
+            th Actions
         each user in users
-            li
-                span= user.name
-                span &nbsp;
-                a(href='/users/'+ user.id) View
+            tr
+                td= user.name
+                td= user.phone
+                td
+                    a(href='/users/'+ user.id) View
 
     script.
         var searchInput = document.getElementById('input-field');
