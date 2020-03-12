@@ -1,0 +1,29 @@
+extends ../layouts/common.pug
+
+block content
+    h1 Product
+
+    .d-flex.align-items-center.pt-4
+        form.ml-auto(action='/users/search')
+            input(type="text" name='q' id="input-field" value=searchInput)
+            button(class="btn btn-primary ml-auto ml-2") Search 
+
+
+    each p in product
+        .row
+            .col-sm
+                .card(style='width: 18rem;') 
+                    img.card-img-top(src=p.img alt='...')
+                    .card-body
+                        h5.card-title=p.name
+                        p.card-text=p.direction
+                            
+                        a.btn.btn-primary(href='#') Add to cart
+
+
+    script.
+        var searchInput = document.getElementById('input-field');
+            searchInput.value = sessionStorage.getItem('draft');
+            searchInput.addEventListener('change', function() {
+            sessionStorage.setItem('draft', searchInput.value);
+        });
