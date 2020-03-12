@@ -18,7 +18,7 @@ app.set('views', './view');
 
 app.use(bodyParser.json()); // for parsing application/json
 app.use(bodyParser.urlencoded({ extended: true })); // for parsing application/x-www-form-urlencoded
-app.use(cookieParser());
+app.use(cookieParser('dasdasdasdasdasdsadasda14454892'));
 app.use(express.static('public'));
 
 app.get('/', function (req, res) {
