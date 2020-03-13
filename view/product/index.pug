@@ -18,17 +18,28 @@ block content
                         h5.card-title=s.name
                         p.card-text=s.direction                      
                         a.btn.btn-primary(href='#') Add to cart
-            
-        nav(aria-label='...')
+
+
+        nav.d-flex.align-self-end(aria-label='...')
             ul.pagination
+                li.page-item
+                    a.page-link(href='?page='+previous) Previous
                 each d in dem    
-                    li.page-item.l-none
+                    li.page-item.l-none.ml-2
                         a.page-link(href='?page='+d.id)=d.id
-          
+                li.page-item.ml-2
+                    a.page-link.next(href='?page='+next id="next") Next
 
     script.
+        var next= document.getElementById('next');
+            next.addEventListenr('click',function(req,res){
+                var page=parseInt(req.query.page) || 1;
+            })
+
         var searchInput = document.getElementById('input-field');
             searchInput.value = sessionStorage.getItem('draft');
             searchInput.addEventListener('change', function() {
             sessionStorage.setItem('draft', searchInput.value);
         });
+
+
