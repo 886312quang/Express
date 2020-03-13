@@ -8,7 +8,7 @@ block content
         form.ml-auto(action='/users/search')
             input(type="text" name='q' id="input-field" value=searchInput)
             button(class="btn btn-primary ml-auto ml-2") Search
-
+    
     table.table
         tr
             th Name
@@ -27,3 +27,4 @@ block content
             searchInput.addEventListener('change', function() {
             sessionStorage.setItem('draft', searchInput.value);
         });
+        

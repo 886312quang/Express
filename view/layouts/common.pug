@@ -14,11 +14,16 @@ html
                 li.nav-item
                     a.nav-link(href='/') Home
                 li.nav-item
-                    a.nav-link(href='/users') Users
+                    a.nav-link(href='/users') Users 
+                li.nav-item
+                    a.bold.nav-link(href='/product') Product
+                    
         if user
-            p= user.name
+            h2= user.name
     
     .container.pt-4
         block content
-      
+
+
+          
 
