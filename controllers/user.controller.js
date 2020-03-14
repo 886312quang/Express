@@ -25,9 +25,19 @@ module.exports.get = function(req,res){
     var id= req.params.id;
 
     var user = db.get('users').find({ id: id}).value();
+    var sessionId = req.signedCookies.sessionId;  
+    var cart = db  .get('sessions')
+                    .find({id:sessionId})
+                    .get('cart')
+                    .value();
+    var sum=0;
+    for(var i in cart){
+        sum=sum+cart[i];
+    }
 
     res.render('users/view', {
-        user:user
+        user:user,
+        sum:sum
     });
 };
 

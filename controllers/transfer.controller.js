@@ -4,7 +4,6 @@ var db = require('../db');
 
 module.exports.tran = function (req, res, next) {
     res.render('transfer/tran',{
-        csrfToken: req.csrfToken()
     });
 }
 

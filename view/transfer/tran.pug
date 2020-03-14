@@ -1,10 +1,11 @@
 extends ../layouts/common.pug
+extends ../layouts/countcart.js
 
 block content
     h1 New Transfer
 
-    form(action="/transfer/tran",method="POST")
-        input(type="hidden", name="_csrf", value=csrfToken)
+    form(method="POST")
+      
         .form-group
             label(for='acountId') Acount
             input#acountId(type="text" name="acountId" class="ml-2")
