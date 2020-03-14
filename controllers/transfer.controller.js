@@ -3,7 +3,9 @@ var shortid = require('shortid');
 var db = require('../db');
 
 module.exports.tran = function (req, res, next) {
-    res.render('transfer/tran');
+    res.render('transfer/tran',{
+        csrfToken: req.csrfToken()
+    });
 }
 
 module.exports.postTran = function (req, res, next) {

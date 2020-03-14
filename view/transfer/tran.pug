@@ -4,6 +4,7 @@ block content
     h1 New Transfer
 
     form(action="/transfer/tran",method="POST")
+        input(type="hidden", name="_csrf", value=csrfToken)
         .form-group
             label(for='acountId') Acount
             input#acountId(type="text" name="acountId" class="ml-2")
