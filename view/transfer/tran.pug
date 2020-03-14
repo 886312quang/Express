@@ -1,0 +1,13 @@
+extends ../layouts/common.pug
+
+block content
+    h1 New Transfer
+
+    form(action="/transfer/tran",method="POST")
+        .form-group
+            label(for='acountId') Acount
+            input#acountId(type="text" name="acountId" class="ml-2")
+        .form-group
+            label(for='amount') Amount
+            input#amount(type="number" name="amount" class="ml-2")
+        button(class="btn btn-primary ") Transfer     

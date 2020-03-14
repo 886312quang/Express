@@ -8,12 +8,13 @@ var cookieParser = require('cookie-parser');
 var userRoute = require('./routes/user.route');
 var authRoute = require('./routes/auth.route');
 var productRoute = require('./routes/product.route');
+var transferRoute = require('./routes/transfer.route');
 
 var authMiddleWare = require('./middleware/auth.middleware');
 
 // Set some defaults (required if your JSON file is empty)
 
-var port = 5500;
+var port = 5501;
 
 var app = express();
 app.set('view engine', 'pug');
@@ -34,9 +35,9 @@ app.get('/', function (req, res) {
 app.use('/users', authMiddleWare.requireAuth, userRoute);
 app.use('/auth', authRoute);
 app.use('/product', productRoute);
+app.use('/transfer', authMiddleWare.requireAuth, transferRoute);
 
 app.listen(port, function () {
     console.log('Server listening on port' + port);
 });
-
 

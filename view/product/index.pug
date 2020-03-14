@@ -28,18 +28,15 @@ block content
                     li.page-item.l-none.ml-2
                         a.page-link(href='?page='+d.id)=d.id
                 li.page-item.ml-2
-                    a.page-link.next(href='?page='+next id="next") Next
+                    a.page-link(href='?page='+next id="next" class="next") Next
 
     script.
-        var next= document.getElementById('next');
-            next.addEventListenr('click',function(req,res){
-                var page=parseInt(req.query.page) || 1;
-            })
-
-        var searchInput = document.getElementById('input-field');
-            searchInput.value = sessionStorage.getItem('draft');
-            searchInput.addEventListener('change', function() {
-            sessionStorage.setItem('draft', searchInput.value);
-        });
+        $(document).ready(function () { 
+            $('.next').click(function () { 
+                $(this).addClass("active");
+            });
+        }
+          
+    
 
 
