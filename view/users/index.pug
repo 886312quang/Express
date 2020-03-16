@@ -11,21 +11,20 @@ block content
     
     table.table
         tr  
+            th Avatar
             th ID
             th Name
             th Phone
-            th Email
-            th Password
             th Actions
         each user in users
             tr  
+                td= user.avatar
                 td= user._id
                 td= user.name
                 td= user.phone
-                td= user.email
-                td= user.password
                 td
                     a(href='/users/'+ user.id) View
+                        a= sum
 
     script.
         var searchInput = document.getElementById('input-field');

@@ -5,20 +5,21 @@ module.exports.requireAuth = async function (req, res, next){
         res.redirect('/auth/login');
         return;
     }
-    var user = await User.find({id:req.signedCookies.userId})
+    var user = await User.find({_id:req.signedCookies.userId})
     //var user =db.get('users').find({id: req.signedCookies.userId}).value();  
   
     var id="";
+    var name="";
     for (const key of user){
-      id=key._id;
+      id=key.id;
+      name=key.name;
     }
-    console.log("ïd")
-    console.log(id);
+   
     if(id!==req.signedCookies.userId){
         res.redirect('/auth/login');
         return;
     }
-    res.locals.user = user;
+    res.locals.user = name;
 
     next();
 };

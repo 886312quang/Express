@@ -35,7 +35,7 @@ module.exports.get = async function(req,res){
 };
 
 module.exports.Create = async function (req, res) {
-    req.body.avatar = req.file.path.split('\\').slice(1).join('/');
+    req.body.avatar = req.file.path;
     
     var user= await User(req.body);
     user.save();
