@@ -1,11 +1,22 @@
 var User = require('../models/user.model');
+var db = require('../db');
 
 module.exports.index = async function (req,res) {
 
     var user = await User.find(); 
+    var sessionId = req.signedCookies.sessionId;  
+    var cart = db  .get('sessions')
+                    .find({id:sessionId})
+                    .get('cart')
+                    .value();
+    var sum=0;
+    for(var i in cart){
+        sum=sum+cart[i];
+    }
 
     res.render('users/index', {
-        users: user
+        users: user,
+        sum:sum
     });
 };
 
@@ -29,8 +40,9 @@ module.exports.get = async function(req,res){
 
 
     var ids = await User.find({_id:i});
+
     res.render('users/id', {
-        id:ids
+        id:ids,
     });
 };
 
