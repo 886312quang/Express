@@ -33,10 +33,13 @@ app.set('views', './view');
 
 app.use(bodyParser.json()); // for parsing application/json
 app.use(bodyParser.urlencoded({ extended: true })); // for parsing application/x-www-form-urlencoded
+app.use('/api/product',apiProductRoute);
+app.use('/api/product/id',apiProductRoute);
 app.use(cookieParser(process.env.KEY_SECRECT));
 console.log(process.env.KEY_SECRECT);
 app.use(express.static('public'));
 app.use(sessionMiddleWare);
+
 
 
 app.get('/', function (req, res) {
@@ -51,7 +54,7 @@ app.use('/auth', authRoute);
 app.use('/product', productRoute);
 app.use('/transfer', transferRoute);
 app.use('/cart', cartRoute)
-app.use('/api/product',apiProductRoute)
+
 app.listen(port, function () {
     console.log('Server listening on port' + port);
 });
