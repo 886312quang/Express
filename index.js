@@ -17,6 +17,8 @@ var productRoute = require('./routes/product.route');
 var transferRoute = require('./routes/transfer.route');
 var cartRoute = require('./routes/cart.route');
 
+var apiProductRoute = require('./API/routes/product.route');
+
 var authMiddleWare = require('./middleware/auth.middleware');
 var sessionMiddleWare = require('./middleware/session.middleware');
 
@@ -49,7 +51,7 @@ app.use('/auth', authRoute);
 app.use('/product', productRoute);
 app.use('/transfer', transferRoute);
 app.use('/cart', cartRoute)
-
+app.use('/api/product',apiProductRoute)
 app.listen(port, function () {
     console.log('Server listening on port' + port);
 });

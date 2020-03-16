@@ -23,7 +23,7 @@ module.exports.addToCart = function (req, res, next) {
     for(var i in cart){
         sum=sum+cart[i];
     }
-    console.log(sum);
+
     
     res.redirect('/product')
 }
