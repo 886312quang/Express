@@ -1,51 +1,43 @@
-var db = require('../db');
-var shortid = require('shortid');
+var User = require('../models/user.model');
 
-module.exports.index = function (req,res) {
+module.exports.index = async function (req,res) {
+
+    var user = await User.find(); 
+
     res.render('users/index', {
-        users: db.get('users').value()
+        users: user
     });
 };
 
-module.exports.search = function (req, res) {
+module.exports.search =  async function (req, res) {
+    
     var q = req.query.q;
-    var matchedUser = db.get('users').write().filter(function (users) {
-        return users.name.toLowerCase().indexOf(q.toLowerCase()) !== -1
-    });
+    var query = await User.find({name:q})
+    
     res.render('users/index', {
-        users: matchedUser
+        users: query
     });
+   
 };
 
 module.exports.create = function (req, res) {
     res.render('users/create');
 };
 
-module.exports.get = function(req,res){
-    var id= req.params.id;
+module.exports.get = async function(req,res){
+    var i= req.params._id;
 
-    var user = db.get('users').find({ id: id}).value();
-    var sessionId = req.signedCookies.sessionId;  
-    var cart = db  .get('sessions')
-                    .find({id:sessionId})
-                    .get('cart')
-                    .value();
-    var sum=0;
-    for(var i in cart){
-        sum=sum+cart[i];
-    }
 
-    res.render('users/view', {
-        user:user,
-        sum:sum
+    var ids = await User.find({_id:i});
+    res.render('users/id', {
+        id:ids
     });
 };
 
-module.exports.postCreate = function (req, res) {
-    req.body.id = shortid.generate();
+module.exports.Create = async function (req, res) {
     req.body.avatar = req.file.path.split('\\').slice(1).join('/');
-
     
-    db.get('users').push(req.body).write();
-    res.redirect('/users');
+    var user= await User(req.body);
+    user.save();
+    res.redirect('/#');
 };

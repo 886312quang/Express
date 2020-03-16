@@ -4,7 +4,9 @@ block content
     h1 View user
     p
         b Name:
-            span=  user.name
+            each i in id
+                p=i.name
         br
         b SDT: 
-            span= user.phone
+            each i in id 
+                p=i.phone
