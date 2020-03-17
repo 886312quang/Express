@@ -13,6 +13,8 @@ router.delete('/', controller.delete);
 
 router.get('/:_id', controller.getId);
 
+router.patch('/:_id', controller.patch);
+
 router.put('/:_id', controller.put);
 
 module.exports = router;

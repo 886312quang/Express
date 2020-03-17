@@ -49,7 +49,7 @@ module.exports.get = async function(req,res){
 module.exports.Create = async function (req, res) {
     req.body.avatar = req.file.path;
     
-    var product = await Product.create(req.body);
-    res.json(product);
+    var user= await User(req.body);
+    user.save();
     res.redirect('/#');
 };
