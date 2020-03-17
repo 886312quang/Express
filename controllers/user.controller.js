@@ -23,10 +23,10 @@ module.exports.index = async function (req,res) {
 module.exports.search =  async function (req, res) {
     
     var q = req.query.q;
-    var query = await User.find({name:q})
-    
+    var user = await User.find({name:q});
+   
     res.render('users/index', {
-        users: query
+        users: user
     });
    
 };

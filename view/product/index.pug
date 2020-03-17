@@ -6,7 +6,7 @@ block content
     h1 Product
 
     .d-flex.align-items-center.pt-4
-        form.ml-auto(action='/users/search')
+        form.ml-auto(action='/product/search')
             input(type="text" name='q' id="input-field" value=searchInput)
             button(class="btn btn-primary ml-auto ml-2") Search 
 
@@ -25,6 +25,7 @@ block content
             ul.pagination
                 li.page-item
                     a.page-link(href='?page='+previous) Previous
+            
                 li.page-item.ml-2
                     a.page-link(href='?page='+next id="next" class="next") Next
                       
